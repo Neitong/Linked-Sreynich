@@ -1,81 +1,55 @@
 #include <stdio.h>
 
-    struct person1
-    {
-        int yearOfBirth;
-        int monthOfBirth;
-        int dayOfBirth;
-    };
+// Define person structure
+struct person
+{
+    int yearOfBirth;
+    int monthOfBirth;
+    int dayOfBirth;
+};
 
-    struct person2
-    {
-        int yearOfBirth;
-        int monthOfBirth;
-        int dayOfBirth;
-    };
-
-//prototype
-    int calculateAge1();
-    int calculateAge2();
-
+// Prototype
+int calculateAge(struct person p);
 
 int main()
 {
-    //We want to know among two persons which one is the youngest!
+    // Declare two persons
+    struct person person1, person2;
 
-    //1. Enter the first person date of birth (year/month/day) 
-    //2. Enter the second person date of birth (year/month/day) 
-    //3. Depending on the 2 dates of birth, print either: 
-        //The first person is the youngest
-        //The second person is the youngest 
-        //Both persons have the same age 
-
-    struct person1 person1;
-    struct person2 person2;
-    
+    // Get the first person's date of birth
     printf("Enter the first person's date of birth (year/month/day): ");
     scanf("%d/%d/%d", &person1.yearOfBirth, &person1.monthOfBirth, &person1.dayOfBirth);
-    
+
+    // Get the second person's date of birth
     printf("Enter the second person's date of birth (year/month/day): ");
     scanf("%d/%d/%d", &person2.yearOfBirth, &person2.monthOfBirth, &person2.dayOfBirth);
-    
-    int getAge1 = calculateAge1();
-    int getAge2 = calculateAge2();
-    
-    if( calculateAge1() < calculateAge2() )
+
+    // Calculate ages
+    int age1 = calculateAge(person1);
+    int age2 = calculateAge(person2);
+
+    // Compare the ages and determine who is younger
+    if (age1 < age2)
     {
         printf("The first person is the youngest.\n");
     }
-    else if(calculateAge1() > calculateAge2())
+    else if (age1 > age2)
     {
         printf("The second person is the youngest.\n");
     }
-
+    else
+    {
+        printf("Both persons have the same age.\n");
+    }
 
     return 0;
 }
 
-int calculateAge1()
+// Function to calculate the "age" in days from year, month, and day
+int calculateAge(struct person p)
 {
-    struct person1 person1;
+    // Assuming all months have 30 days and all years have 365 days
+    int ageInDays = p.yearOfBirth * 365 + p.monthOfBirth * 30 + p.dayOfBirth;
 
-    // Calculate the age of the first person
-    int age1 = person1.dayOfBirth + person1.monthOfBirth * 30 + person1.yearOfBirth * 365;
-
-    return age1;
- 
+    return ageInDays;
 }
-
-int calculateAge2()
-{
-    struct person2 person2;
-    
-    // Calculate the age of the second person
-    int age2 = person2.dayOfBirth  + person2.monthOfBirth * 30 + person2.yearOfBirth * 365;
-    
-    return age2;
-}
-
-
-    
-    
