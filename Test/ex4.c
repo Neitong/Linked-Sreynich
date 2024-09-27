@@ -49,32 +49,11 @@ int main() {
                 strcmp(courses[j].course, "java") == 0 &&
                 strcmp(courses[j].country, "Philippines") == 0)
             {
-                printf("%s %s\n", first_name, last_name);
-                break; // Stop after finding the lecturer's Java course in the Philippines
+                printf("%s " , first_name);
             }
         }
     }
 
-    // Task 2: Print the total number of courses taught by each lecturer
-    printf("\nTotal number of courses taught by each lecturer:\n");
-    for (int i = 0; i < num_lecturers; i++)
-    {
-        int lecturer_id = lecturers[i].lecturer_id;
-        char *first_name = lecturers[i].first_name;
-        char *last_name = lecturers[i].last_name;
-        int num_courses_taught = 0;
-        
-        // Count all courses taught by the lecturer
-        for (int j = 0; j < num_courses; j++)
-        {
-            if (courses[j].lecturer_id == lecturer_id)
-            {
-                num_courses_taught++;
-            }
-        }
-
-        printf("%s %s: %d courses\n", first_name, last_name, num_courses_taught);
-    }
-
+    
     return 0;
 }
